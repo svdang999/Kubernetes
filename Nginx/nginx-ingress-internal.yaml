@@ -1,1 +1,4 @@
-
+# Deployment for Public Nginx Ingress Controller to Azure AKS 
+# Helm version 3
+# Nginx Ingress 4.7.2
+# AKS 1.27.3
