@@ -1,0 +1,16 @@
+# Deployment for Public Nginx Ingress Controller to Azure AKS 
+# Helm version 3
+# Nginx Ingress 4.7.2
+# AKS 1.27.3
+
+helm install nginx-ingress-public ingress-nginx/ingress-nginx \
+    --version 4.7.2 \
+    --namespace nginx-public \
+    --set controller.replicaCount=1 \
+    --set controller.nodeSelector."kubernetes\.io/os"=linux \
+    --set controller.admissionWebhooks.patch.nodeSelector."kubernetes\.io/os"=linux \
+    --set controller.admissionWebhooks.patch.image.digest="" \
+    --set defaultBackend.nodeSelector."kubernetes\.io/os"=linux \
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz \
+    --set controller.extraArgs.default-ssl-certificate="nginx-public/xxx-tls" \
+    --set controller.extraArgs.enable-ssl-passthrough=""
