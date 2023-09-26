@@ -4,3 +4,7 @@ https://bitnami.com/stack/redis/helm
 https://artifacthub.io/packages/helm/bitnami-aks/redis/16.10.1
 ```
 
+```
+helm repo add azure-marketplace
+helm -n demo install redis-crew azure-marketplace/redis
+```
