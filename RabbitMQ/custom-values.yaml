@@ -775,7 +775,9 @@ resources:
   ##    cpu: 1000m
   ##    memory: 2Gi
   ##
-  limits: {}
+  limits:
+    cpu: 1000m
+    memory: 1Gi
   ## Examples:
   ## requests:
   ##    cpu: 1000m
@@ -1431,7 +1433,9 @@ volumePermissions:
     ##    cpu: 100m
     ##    memory: 128Mi
     ##
-    limits: {}
+    limits:
+      cpu: 1000m
+      memory: 1Gi
     ## Examples:
     ## requests:
     ##    cpu: 100m
