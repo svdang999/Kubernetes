@@ -1,6 +1,7 @@
 # Default values for opentelemetry-collector.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+# https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml
 
 nameOverride: ""
 fullnameOverride: ""
@@ -286,11 +287,10 @@ ports:
     protocol: TCP
 
 # Resource limits & requests. Update according to your own use case as these values might be too low for a typical deployment.
-resources: {}
-# resources:
-#   limits:
-#     cpu: 250m
-#     memory: 512Mi
+resources:
+  limits:
+    cpu: 250m
+    memory: 512Mi
 
 podAnnotations: {}
 
