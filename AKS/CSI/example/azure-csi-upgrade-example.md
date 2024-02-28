@@ -1,5 +1,5 @@
+##Uninstall old version
 ```
-
 HRS+sda06@T2P-LAP037 MINGW64 ~
 $ curl -skSL https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/v1.9.0/deploy/uninstall-driver.sh | bash -s v1.9.0 --
 Uninstalling Azure Disk CSI driver, version: v1.9.0 ...
@@ -12,7 +12,10 @@ csidriver.storage.k8s.io "disk.csi.azure.com" deleted
 serviceaccount "csi-azuredisk-node-sa" deleted
 clusterrole.rbac.authorization.k8s.io "csi-azuredisk-node-secret-role" deleted
 Uninstalled Azure Disk CSI driver successfully.
+```
 
+##Install new
+```
 HRS+sda06@T2P-LAP037 MINGW64 ~
 $ curl -skSL https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/v1.9.0/deploy/install-driver.sh | bash -s v1.9.0 --
 Installing Azure Disk CSI driver, version: v1.9.0 ...
@@ -36,9 +39,7 @@ daemonset.apps/csi-azuredisk-node configured
 daemonset.apps/csi-azuredisk-node-win configured
 deployment.apps/csi-azuredisk-controller configured
 Azure Disk CSI driver installed successfully.
-
---------------------
-
+```
 
 
 
