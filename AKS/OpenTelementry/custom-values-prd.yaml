@@ -1,7 +1,6 @@
 # Default values for opentelemetry-collector.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-# https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-collector/values.yaml
 
 nameOverride: ""
 fullnameOverride: ""
@@ -87,6 +86,9 @@ configMap:
 # For example, {{ REDACTED_EMAIL }} becomes {{` {{ REDACTED_EMAIL }} `}}.
 config:
   exporters:
+    prometheus:
+      endpoint: "0.0.0.0:8889"
+
     debug: {}
     # Will be removed in a future release.
     # Use the debug exporter instead.
@@ -145,13 +147,14 @@ config:
           - otlp
       metrics:
         exporters:
-          - debug
+        #  - debug
+          - prometheus
         processors:
           - memory_limiter
           - batch
         receivers:
           - otlp
-          - prometheus
+        #  - prometheus
       traces:
         exporters:
           - debug
@@ -263,25 +266,25 @@ ports:
     hostPort: 4318
     protocol: TCP
   jaeger-compact:
-    enabled: true
+    enabled: false
     containerPort: 6831
     servicePort: 6831
     hostPort: 6831
     protocol: UDP
   jaeger-thrift:
-    enabled: true
+    enabled: false
     containerPort: 14268
     servicePort: 14268
     hostPort: 14268
     protocol: TCP
   jaeger-grpc:
-    enabled: true
+    enabled: false
     containerPort: 14250
     servicePort: 14250
     hostPort: 14250
     protocol: TCP
   zipkin:
-    enabled: true
+    enabled: false
     containerPort: 9411
     servicePort: 9411
     hostPort: 9411
@@ -293,12 +296,19 @@ ports:
     containerPort: 8888
     servicePort: 8888
     protocol: TCP
+  prometheus:
+    enabled: true
+    containerPort: 8889
+    servicePort: 8889
+    hostPort: 8889
+    protocol: TCP
 
 # Resource limits & requests. Update according to your own use case as these values might be too low for a typical deployment.
-resources:
-  limits:
-    cpu: 250m
-    memory: 512Mi
+resources: {}
+# resources:
+#   limits:
+#     cpu: 250m
+#     memory: 512Mi
 
 podAnnotations: {}
 
@@ -310,6 +320,13 @@ additionalLabels: {}
 
 # Host networking requested for this pod. Use the host's network namespace.
 hostNetwork: false
+
+# Adding entries to Pod /etc/hosts with HostAliases
+# https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/
+hostAliases: []
+  # - ip: "1.2.3.4"
+  #   hostnames:
+  #     - "my.host.com"
 
 # Pod DNS policy ClusterFirst, ClusterFirstWithHostNet, None, Default, None
 dnsPolicy: ""
