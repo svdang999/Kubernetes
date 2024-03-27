@@ -305,10 +305,9 @@ ports:
 
 # Resource limits & requests. Update according to your own use case as these values might be too low for a typical deployment.
 resources:
-  resources:
-    limits:
-      cpu: 250m
-      memory: 256Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi
 
 podAnnotations: {}
 
