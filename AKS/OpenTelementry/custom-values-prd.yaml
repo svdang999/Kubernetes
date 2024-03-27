@@ -226,7 +226,15 @@ securityContext: {}
 
 nodeSelector: {}
 tolerations: []
-affinity: {}
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: agentpool
+          operator: In
+          values:
+          - pool1pay
 topologySpreadConstraints: []
 
 # Allows for pod scheduler prioritisation
