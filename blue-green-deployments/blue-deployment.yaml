@@ -22,22 +22,3 @@ spec:
           ports:
             - name: http
               containerPort: 80
-
-#service
----
-apiVersion: v1
-kind: Service
-metadata: 
-  name: nginx
-  labels: 
-    name: nginx
-spec:
-  ports:
-    - name: http
-      port: 80
-      targetPort: 80
-  selector:
-    name: nginx
-    version: "1.10"
-    env: blue
-  type: NodePort
