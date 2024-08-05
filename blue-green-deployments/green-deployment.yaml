@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-1.10-green
+  labels:
+    env: green
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      env: green
+  template:
+    metadata:
+      labels:
+        name: nginx
+        version: "1.10"
+        env: green
+    spec:
+      containers: 
+        - name: nginx
+          image: nginx:1.10
+          ports:
+            - name: http
+              containerPort: 80
