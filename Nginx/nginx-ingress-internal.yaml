@@ -1,7 +1,8 @@
 # Deployment for Internal Nginx Ingress Controller to Azure AKS 
 # Basic flow from Azure WAF -> AKS Internal Ingress -> SVC/Pods
 # Helm version 3
-# Nginx Ingress 4.7.2
+# Nginx Ingress 4.7.2 
+# https://artifacthub.io/packages/helm/ingress-nginx/ingress-nginx
 # AKS 1.27.3
 
 helm install nginx-ingress-internal ingress-nginx/ingress-nginx \
